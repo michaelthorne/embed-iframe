@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>JavaScript YouTube iframe embed</title>
+
+    <style>
+        .video {
+            height: 100%;
+            max-height: 480px;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .video img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .video a {
+            display: block;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .video a:focus::after,
+        .video a:hover::after {
+            opacity: 1;
+        }
+
+        .video a::after {
+            bottom: 0;
+            color: #fff;
+            content: '▶';
+            display: block;
+            font-size: 64px;
+            height: 64px;
+            left: 0;
+            line-height: 1;
+            opacity: 0.75;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 0;
+            transition: opacity 0.25s;
+            width: 64px;
+        }
+
+        iframe {
+            border: 0;
+            height: 480px;
+            width: 640px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Default YouTube iframe embed</h1>
+
+    <p>This example uses JavaScript to create the iframe on click of an anchor.</p>
+
+    <p>
+        <code></code>
+    </p>
+
+    <div class="video">
+        <a class="js-embed" href="https://www.youtube.com/embed/yPowHRjSFCA?autoplay=1&rel=0" target="_blank">
+            <img src="http://img.youtube.com/vi/yPowHRjSFCA/sddefault.jpg" width="640" height="480" alt="Standard definition video image">
+        </a>
+    </div>
+
+    <script>
+        var embeds = document.querySelectorAll('.js-embed');
+
+        embeds.forEach(function (embed) {
+            var url = embed.getAttribute('href');
+
+            embed.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('src', url);
+                embed.parentNode.replaceChild(iframe, embed);
+            });
+        });
+    </script>
+</body>
+</html>
