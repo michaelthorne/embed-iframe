@@ -1,2 +1,2 @@
-# IFrame Embed JS
-Using JavaScript to embed an IFrame for better performance with e.g. YouTube videos
+# Embed iframe JS
+Using JavaScript to embed an iframe for better performance with e.g. YouTube videos
