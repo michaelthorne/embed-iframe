@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>JavaScript YouTube iframe embed</title>
+    <title>Custom JavaScript YouTube iframe embed</title>
 
     <style>
         /*
@@ -28,11 +28,15 @@
         }
 
         h1 {
-            margin-bottom: 4px;
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 16px;
+            max-width: 720px;
         }
 
         p {
             margin-bottom: 16px;
+            max-width: 720px;
         }
 
         pre {
@@ -120,7 +124,7 @@
 </head>
 <body>
     <main>
-        <h1>Default YouTube iframe embed</h1>
+        <h1>Custom JavaScript YouTube iframe embed</h1>
 
         <p>This example uses JavaScript to create the iframe and play the video on click of the anchor.</p>
 
@@ -140,6 +144,43 @@
 
     &lt;figcaption&gt;Die Burger 42km MTB Challenge 2012 [Part 9 of 11] [GoPro HD Hero2]&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
+
+        <pre>
+<code>&lt;script&gt;
+    // Get all iframes to be embedded
+    var embeds = document.querySelectorAll('.js-embed-iframe');
+
+    embeds.forEach(function (embed) {
+        // Get the href from the anchor for each iframe to be embedded
+        var url = embed.getAttribute('href');
+
+        // Check that there is a URL
+        if (typeof url !== 'undefined' && url !== '') {
+
+            // Add an on click event listener to the anchor
+            embed.addEventListener('click', function (e) {
+                var anchor = this;
+
+                // Prevent clicking through to the href
+                e.preventDefault();
+
+                // Create the iframe and set the source attribute to the value of the anchor’s href
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('src', url);
+
+                // Get the parent of the anchor and replace the anchor with the iframe + remove the figure’s caption
+                var parent = anchor.parentNode;
+                parent.replaceChild(iframe, anchor);
+                parent.removeChild(document.querySelector('figcaption'));
+            });
+        }
+    });
+&lt;/script&gt;</code>
+        </pre>
+
+        <p>Read about the <a href="default-embed.html">default</a> method for embedding an iframe.</p>
+
+        <p>Or go back to the <a href="performance-comparison.html">performance comparision</a> of the two methods.</p>
 
         <script>
             // Get all iframes to be embedded

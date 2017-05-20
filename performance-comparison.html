@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Performance comparison of two methods for embedding an iframe</title>
+
+    <style>
+        /*
+         * Reset
+         */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 100%;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+
+        ul {
+            margin-left: 16px;
+        }
+
+        pre {
+            background-color: whitesmoke;
+            line-height: 1;
+            margin: 16px 0;
+            padding: 16px;
+        }
+
+        code {
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+
+        table caption {
+            margin-bottom: 1em;
+            text-align: left;
+        }
+
+        table th {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            padding: 4px 8px;
+            text-align: center;
+        }
+
+        table td {
+            border-right: 1px solid black;
+            padding: 4px 8px;
+            text-align: center;
+        }
+
+        table tfoot td {
+            border-top: 1px solid black;
+            font-style: italic;
+            padding: 4px 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Performance comparison of two methods for embedding an iframe</h1>
+
+        <p>The <a href="default-embed.html">default</a> method for embedding an iframe uses the code YouTube provides as
+            is. The <a href="custom-javascript-embed.html">custom</a> method involves using JavaScript to load the iframe
+            on the click event of an anchor.</p>
+
+        <p>This has a big impact on improving performance as none of the third-party code that YouTube includes is requested,
+            until the anchor is clicked. Specifically, <code>base.js</code> which is ~407 KB.</p>
+
+        <p>In terms of user experience, due to the use of the <code>autoplay=1</code> parameter, the effect is similar (if
+            not the same) as clicking on the play button in the YouTube player iframe. This causes the video to start
+            playing within the iframe as soon as it has loaded once you click on the anchor.</p>
+
+        <table>
+            <caption>This highlights the key performance metrics of the two methods:</caption>
+            <thead>
+            <tr>
+                <th colspan="9"><a href="https://www.webpagetest.org/result/170520_6H_CBQ/">Default</a></th>
+                <th colspan="9"><a href="https://www.webpagetest.org/result/170520_1S_CVW/">Custom</a></th>
+            </tr>
+            <tr>
+                <th colspan="3">&nbsp;</th>
+                <th colspan="3">Document Complete</th>
+                <th colspan="3">Fully Loaded</th>
+                <th colspan="3">&nbsp;</th>
+                <th colspan="3">Document Complete</th>
+                <th colspan="3">Fully Loaded</th>
+            </tr>
+            <tr>
+                <th rowspan="2">Load Time</th>
+                <th rowspan="2">Start Render</th>
+                <th rowspan="2">Speed Index</th>
+                <th rowspan="2">Time</th>
+                <th rowspan="2">Requests</th>
+                <th rowspan="2">Bytes In</th>
+                <th rowspan="2">Time</th>
+                <th rowspan="2">Requests</th>
+                <th rowspan="2">Bytes In</th>
+                <th rowspan="2">Load Time</th>
+                <th rowspan="2">Start Render</th>
+                <th rowspan="2">Speed Index</th>
+                <th rowspan="2">Time</th>
+                <th rowspan="2">Requests</th>
+                <th rowspan="2">Bytes In</th>
+                <th rowspan="2">Time</th>
+                <th rowspan="2">Requests</th>
+                <th rowspan="2">Bytes In</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2.604s</td>
+                <td>0.509s</td>
+                <td>2468</td>
+                <td>2.604s</td>
+                <td>12</td>
+                <td>631 KB</td>
+                <td><mark>2.818s</mark></td>
+                <td>13</td>
+                <td><mark>632 KB</mark></td>
+                <td>0.549s</td>
+                <td>0.711s</td>
+                <td>700</td>
+                <td>0.549s</td>
+                <td>2</td>
+                <td>60 KB</td>
+                <td><mark>0.709s</mark></td>
+                <td>3</td>
+                <td><mark>61 KB</mark></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="18"><a href="http://www.webpagetest.org">WebPagetest</a> was used to obtain the data.</td>
+            </tr>
+            </tfoot>
+        </table>
+
+        <p>The time and bytes in metrics highlight the biggest performance differences between the two methods. Whilst
+            the default method for embedding a YouTube iframe provides the convenience of getting the video ready for the
+            user to play it immediately, it comes at the cost of an increased load time. This also assumes that the user
+            actually wants to watch the video.</p>
+
+        <p>Using JavaScript to only load the iframe on click of the anchor, in other words, once the user has shown intent
+            to watch the video, reduces the initial page load time drastically.</p>
+
+        <p>Additionally, the custom method makes use of progressive enhancement in that the anchor has a valid <code>href</code>
+            so the user can still navigate to the video on YouTube in the event that JavaScript fails.</p>
+    </main>
+</body>
+</html>
