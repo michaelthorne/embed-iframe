@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Performance comparison of two methods for embedding an iframe</title>
+    <title>Performance comparison of two methods for embedding a YouTube video</title>
 
     <style>
         /*
@@ -96,10 +96,10 @@
 </head>
 <body>
     <main>
-        <h1>Performance comparison of two methods for embedding an iframe</h1>
+        <h1>Performance comparison of two methods for embedding a YouTube video</h1>
 
-        <p>The <a href="embed-iframe-default.html">default</a> method for embedding an iframe uses the code YouTube
-            provides as is. The <a href="embed-iframe-javascript.html">JavaScript</a> method involves creating an iframe
+        <p>The <a href="embed-iframe-default.html">default</a> method for embedding a YouTube video uses an inline
+            iframe. The custom <a href="embed-iframe-javascript.html">JavaScript</a> method involves creating an iframe element
             and inserting it into the DOM on the click event of an anchor.</p>
 
         <p>This has a big impact on improving performance as none of the third-party code that YouTube includes is
