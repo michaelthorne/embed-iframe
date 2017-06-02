@@ -16,11 +16,15 @@
         *::before,
         *::after {
             box-sizing: border-box;
-            font-family: sans-serif;
-            font-size: 100%;
-            line-height: 1.5;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+                "Helvetica Neue", sans-serif;
+            font-size: 100%;
+            line-height: 1.5;
         }
 
         main {
@@ -94,23 +98,23 @@
     <main>
         <h1>Performance comparison of two methods for embedding an iframe</h1>
 
-        <p>The <a href="default-embed.html">default</a> method for embedding an iframe uses the code YouTube provides as
-            is. The <a href="custom-javascript-embed.html">custom</a> method involves using JavaScript to load the iframe
-            on the click event of an anchor.</p>
+        <p>The <a href="embed-iframe-default.html">default</a> method for embedding an iframe uses the code YouTube
+            provides as is. The <a href="embed-iframe-javascript.html">JavaScript</a> method involves creating an iframe
+            and inserting it into the DOM on the click event of an anchor.</p>
 
-        <p>This has a big impact on improving performance as none of the third-party code that YouTube includes is requested,
-            until the anchor is clicked. Specifically, <code>base.js</code> which is ~407 KB.</p>
+        <p>This has a big impact on improving performance as none of the third-party code that YouTube includes is
+            requested, until the anchor is clicked. Specifically, <code>base.js</code> which is ~407 KB.</p>
 
-        <p>In terms of user experience, due to the use of the <code>autoplay=1</code> parameter, the effect is similar (if
-            not the same) as clicking on the play button in the YouTube player iframe. This causes the video to start
-            playing within the iframe as soon as it has loaded once you click on the anchor.</p>
+        <p>In terms of user experience, due to the use of the <code>autoplay=1</code> parameter, the effect is similar
+            to (if not the same as) clicking on the play button in the YouTube player iframe. This causes the video to
+            start playing within the iframe as soon as it has loaded after clicking on the anchor.</p>
 
         <table>
-            <caption>This highlights the key performance metrics of the two methods:</caption>
+            <caption>This data highlights the key performance metrics of these two methods:</caption>
             <thead>
             <tr>
                 <th colspan="9"><a href="https://www.webpagetest.org/result/170520_6H_CBQ/">Default</a></th>
-                <th colspan="9"><a href="https://www.webpagetest.org/result/170520_1S_CVW/">Custom</a></th>
+                <th colspan="9"><a href="https://www.webpagetest.org/result/170520_1S_CVW/">JavaScript</a></th>
             </tr>
             <tr>
                 <th colspan="3">&nbsp;</th>
@@ -170,16 +174,17 @@
             </tfoot>
         </table>
 
-        <p>The time and bytes in metrics highlight the biggest performance differences between the two methods. Whilst
-            the default method for embedding a YouTube iframe provides the convenience of getting the video ready for the
-            user to play it immediately, it comes at the cost of an increased load time. This also assumes that the user
-            actually wants to watch the video.</p>
+        <p>The time and bytes in metrics highlight the biggest performance differences between these two methods. Whilst
+            the default method for embedding a YouTube iframe provides the convenience of getting the video ready for
+            the user to play it immediately, it comes at the cost of an increased load time. This also assumes that the
+            user actually wants to watch the video.</p>
 
-        <p>Using JavaScript to only load the iframe on click of the anchor, in other words, once the user has shown intent
-            to watch the video, reduces the initial page load time drastically.</p>
+        <p>Using JavaScript to only load the iframe on click of the anchor, in other words, once the user has shown
+            intent to watch the video, reduces the initial page load time drastically.</p>
 
-        <p>Additionally, the custom method makes use of progressive enhancement in that the anchor has a valid <code>href</code>
-            so the user can still navigate to the video on YouTube in the event that JavaScript fails.</p>
+        <p>Additionally, the JavaScript method makes use of progressive enhancement in that the anchor has a valid
+            <code>href</code> so the user can still navigate to the video on YouTube in the event that JavaScript
+            fails.</p>
     </main>
 </body>
 </html>

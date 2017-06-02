@@ -1,2 +1,3 @@
-# Embedding iframes
-Using JavaScript to embed an iframe (e.g. YouTube video) on a click event for better performance.
+# Comparing the performance of two methods for embedding an iframe e.g. a YouTube video
+
+Using an inline iframe vs 

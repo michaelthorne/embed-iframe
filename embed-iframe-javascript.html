@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Custom JavaScript YouTube iframe embed</title>
+    <title>Using JavaScript to embed an iframe</title>
 
     <style>
         /*
@@ -21,6 +21,13 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+            "Helvetica Neue", sans-serif;
+            font-size: 100%;
+            line-height: 1.5;
         }
 
         main {
@@ -54,7 +61,7 @@
 
         .figure {
             height: 100%;
-            margin: 0;
+            margin: 0 0 1em;
             max-height: 480px;
             max-width: 640px;
             position: relative;
@@ -124,9 +131,9 @@
 </head>
 <body>
     <main>
-        <h1>Custom JavaScript YouTube iframe embed</h1>
+        <h1>Using JavaScript to embed an iframe</h1>
 
-        <p>This example uses JavaScript to create the iframe and play the video on click of the anchor.</p>
+        <p>This example uses JavaScript to create an iframe and play the video on click of the anchor.</p>
 
         <figure class="figure">
             <a class="js-embed-iframe" href="https://www.youtube.com/embed/yPowHRjSFCA?autoplay=1&rel=0" target="_blank">
@@ -136,6 +143,8 @@
             <figcaption>Die Burger 42km MTB Challenge 2012 [Part 9 of 11] [GoPro HD Hero2]</figcaption>
         </figure>
 
+        <h2>HTML</h2>
+
         <pre>
 <code>&lt;figure class="figure"&gt;
     &lt;a class="js-embed-iframe" href="https://www.youtube.com/embed/yPowHRjSFCA?autoplay=1&rel=0" target="_blank"&gt;
@@ -144,6 +153,8 @@
 
     &lt;figcaption&gt;Die Burger 42km MTB Challenge 2012 [Part 9 of 11] [GoPro HD Hero2]&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
+
+        <h2>JavaScript</h2>
 
         <pre>
 <code>&lt;script&gt;
@@ -178,9 +189,9 @@
 &lt;/script&gt;</code>
         </pre>
 
-        <p>Read about the <a href="default-embed.html">default</a> method for embedding an iframe.</p>
+        <p>Read about the <a href="embed-iframe-default.html">default</a> method for embedding an iframe.</p>
 
-        <p>Or go back to the <a href="performance-comparison.html">performance comparision</a> of the two methods.</p>
+        <p>Or go back to the <a href="index.html">performance comparision</a> of these two methods.</p>
 
         <script>
             // Get all iframes to be embedded

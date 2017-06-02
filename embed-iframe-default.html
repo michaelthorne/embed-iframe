@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Default YouTube iframe embed</title>
+    <title>Using YouTube’s default method to embed an iframe</title>
 
     <style>
         /*
@@ -21,6 +21,13 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+            "Helvetica Neue", sans-serif;
+            font-size: 100%;
+            line-height: 1.5;
         }
 
         main {
@@ -57,24 +64,27 @@
             border: 0;
             display: block;
             height: 480px;
+            margin-bottom: 1em;
             width: 640px;
         }
     </style>
 </head>
 <body>
     <main>
-        <h1>Default YouTube iframe embed</h1>
+        <h1>Using YouTube’s default method to embed an iframe</h1>
 
-        <p>This example uses the code provided by YouTube for embedding an iframe with the video.</p>
+        <p>This example uses the code provided by YouTube for embedding an iframe.</p>
 
         <iframe width="640" height="480" src="https://www.youtube.com/embed/yPowHRjSFCA?rel=0" frameborder="0" allowfullscreen></iframe>
+
+        <h2>HTML</h2>
 
         <pre>
 <code>&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/yPowHRjSFCA?rel=0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
 
-        <p>Read about a <a href="custom-javascript-embed.html">custom JavaScript</a> method for embedding an iframe.</p>
+        <p>Read about using <a href="embed-iframe-javascript.html">JavaScript</a> to embed an iframe.</p>
 
-        <p>Or go back to the <a href="performance-comparison.html">performance comparision</a> of the two methods.</p>
+        <p>Or go back to the <a href="index.html">performance comparision</a> of these two methods.</p>
     </main>
 </body>
 </html>
